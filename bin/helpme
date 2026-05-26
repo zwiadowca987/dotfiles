@@ -1,0 +1,112 @@
+#!/bin/bash
+if [ -z $1 ]; then
+    echo "nav - Nawigacja
+sel - Zaznaczanie
+files - operacje na plikach
+modes - Edycja tekstu - tryby
+text-nav - Edycja tekstu - poruszanie się
+text-edit - Edycja tekstu - kopiowanie i usuwanie
+text-sel - Edycja tekstu - zaznaczanie
+text-search - Edycja tekstu - szukaj i zastępuj
+gen - Ogólne"
+fi
+
+if [ "$1" == "nav" ]; then
+    echo "# Nawigacja
+| operacja                   | vim / neovim / yazi | emacs / dired         |
+| góra / dół                 | j / k lub ↑↓        | n / p lub ↑↓          |
+| katalog wyżej              | h lub ←             | ^ (dired-up)          |
+| wejdź do katalogu / otwórz | l lub → lub Enter   | Enter lub f           |
+| skocz na początek          | gg                  | M-<                   |
+| skocz na koniec            | G                   | M->                   |
+| katalog domowy             | ~                   | ~ (w mini-buferze     |
+| szukaj w katalogu          | /                   | C-s (isearch)         |
+| ukryte pliki toggle        | .                   | M-o (dired-omit-mode) |"
+fi
+
+if [ "$1" == "sel" ]; then
+    echo "# Zaznaczanie
+| operacja          | vim / neovim / yazi | emacs / dired        |
+| zaznacz plik      | Space               | m                    |
+| odznacz plik      | Space ponownie      | u                    |
+| zaznacz wszystkie | v (visual mode)     | t (toggle all marks) |
+| odznacz wszystkie | Esc                 | U                    |
+| zaznacz wg wzorca | f (filter)          | % m                  |"
+fi
+
+if [ "$1" == "files" ]; then
+    echo "# Operacje na plikach
+| operacja            | vim / neovim / yazi | emacs / dired       |
+| kopiuj              | y                   | C                   |
+| wytnij / przenieś   | x                   | R                   |
+| wklej               | p                   | - (cel w R)         |
+| usuń                | d                   | D (od razu)         |
+| zmień nazwę         | r                   | R                   |
+| nowy katalog        | a                   | +                   |
+| nowy plik           | a                   | C-x C-f (find-file) |
+| uprawnienia (chmod) | M                   | M                   |
+| podgląd pliku       | → lub panel prawy   | v                   |
+| otwórz              | o                   | !                   |
+| anuluj operację     | X                   | C-g                 |"
+fi
+
+if [ "$1" == "modes" ]; then
+    echo "# Edycja tekstu - tryby
+| operacja                | vim / neovim / yazi | emacs / dired   |
+| tryb normalny do insert | i / a / o           | - (nie dotyczy) |
+| tryb insert do normal   | Esc lub C-[         | - (nie dotyczy) |"
+fi
+
+if [ "$1" == "text-nav" ]; then
+    echo "# Edycja tekstu - poruszanie się
+| operacja                   | vim / neovim / yazi | emacs / dired |
+| znak w lewo / prawo        | h / l               | C-b / C-f     |
+| słowo w przód / tył        | w / b               | M-f / M-b     |
+| początek / koniec linii    | 0 / $               | C-a / C-e     |
+| początek / koniec linii    | gg / G              | C-a / C-e     |
+| skocz do linii N           | NG lub :N           | M-g g         |
+| przewiń ekran w górę / dół | C-u / C-d           | M-v / C-v     |"
+fi
+
+if [ "$1" == "text-edit" ]; then
+    echo "# Edycja tekstu — kopiowanie i usuwanie
+| operacja               | vim / neovim / yazi | emacs / dired        |
+| kopiuj linię (yank)    | yy                  | M-w (po zaznaczeniu) |
+| wytnij linię (kill)    | dd                  | C-k (kill-line)      |
+| wklej                  | p / P               | C-y (yank)           |
+| cofnij                 | u                   | C-/ lub C-x u        |
+| ponów                  | C-r                 | C-g C-/              |
+| usuń znak pod kursorem | x                   | C-d                  |
+| usuń do końca linii    | D                   | C-k                  |
+| usuń słowo w przód     | dw                  | M-d                  |
+| usuń słowo wstecz      | db                  | M-Backspace          |"
+fi
+
+if [ "$1" == "text-sel" ]; then
+    echo "# Edycja tekstu - zaznaczanie
+| operacja               | vim / neovim / yazi | emacs / dired             |
+| zaznacz (visual)       | v                   | C-Space (set-mark)        |
+| zaznacz linię          | V                   | C-Space na początku + C-e |
+| Zaznacz blok (kolumny) | C-V                 | C-x Space                 |"
+fi
+
+if [ "$1" == "text-search" ]; then
+    echo "# Edycja tekstu - szukaj i zastępuj
+| operacja             | vim / neovim / yazi | emacs / dired       |
+| szukaj w przód       | /                   | C-s                 |
+| wszukaj wstecz       | ?                   | C-r                 |
+| następne wystąpienie | n                   | C-s ponownie        |
+| zastąp               | :%s/stare/nowe/g    | M-% (query-replace) |"
+fi
+
+if [ "$1" == "gen" ]; then
+    echo "# Ogólne
+| operacja             | vim / neovim / yazi | emacs / dired     |
+| zapisz plik          | :w                  | C-x c-s           |
+| zamknij / wyjdź      | :q / :wq / ZZ       | C-x C-c lub C-x k |
+| komenda / M-x        | :                   | M-x               |
+| anuluj akcję         | Esc                 | C-g               |
+| podziel okno poziomo | :sp                 | C-x 2             |
+| podziel okno pionowo | :vsp                | C-x 3             |
+| przełącz okno        | C-w w               | C-x o             |"
+fi

@@ -1,0 +1,65 @@
+#!/usr/bin/env python3
+from pathlib import Path
+import sys
+import subprocess
+
+BIN_DIR = Path(__file__).parent / "_download"
+DOWNLOAD_DIR = Path.home() / "Pobrane" / "download"
+DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+profiles = {
+    "music": {
+        "cmd": str(BIN_DIR / "yt-dlp"),
+        "args": [
+            "--newline",
+            "-x",
+            "--audio-format", "m4a",
+            "--embed-thumbnail",
+            "--add-metadata",
+            "-P", str(DOWNLOAD_DIR),
+            "-o", "%(title)s.%(ext)s",
+        ],
+    },
+    "video": {
+        "cmd": str(BIN_DIR / "yt-dlp"),
+        "args": [
+            "--newline",
+            "-f", "bestvideo+bestaudio/best",
+            "--merge-output-format", "mp4",
+            "-P", str(DOWNLOAD_DIR),
+            "-o", "%(title)s.%(ext)s",
+        ],
+    },
+    "image": {
+        "cmd": str(BIN_DIR / "gallery-dl.bin"),
+        "args": [
+            "--cookies-from-browser", "brave",
+            "-o", "directory=[\"instagram\", \"{username}_{post_shortcode}\"]",
+            "-o", "filename={num:>02}.{extension}",
+            "-d", str(DOWNLOAD_DIR),
+        ],
+    },
+}
+
+def main():
+    if len(sys.argv) < 3:
+        print('Usage:')
+        print("download <profile> <url>")
+        print('Available profiles:')
+        print('<music> - download music from Youtube')
+        print('<video> - download video from Youtube')
+        print('<image> - download carousel from Instagram')
+        sys.exit(1)
+
+    profile, url = sys.argv[1], sys.argv[2]
+
+    if profile not in profiles:
+        print(f"Unknown profile: {profile}")
+        sys.exit(1)
+
+    cfg = profiles[profile]
+    cmd = [cfg["cmd"]] + cfg["args"] + [url]
+    subprocess.run(cmd)
+
+if __name__ == "__main__":
+    main()

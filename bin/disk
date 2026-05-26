@@ -1,0 +1,24 @@
+#!/bin/bash
+targets=()
+
+if [[ $# -eq 0 ]]; then
+  targets=(* .[^.]*)
+else
+  for arg in "$@"; do
+    if [[ -d "$arg" ]]; then
+      targets+=("${arg%/}"/*)
+      targets+=("${arg%/}"/.[^.]*)
+    else
+      targets+=("$arg")
+    fi
+  done
+fi
+
+du -sh -- "${targets[@]}" 2>/dev/null | sort -hr | while IFS=$'\t' read -r size name; do
+  short=$(basename "$name")
+  if [[ -d "$name" ]]; then
+    printf '\033[34m%s\t📁 %s\033[0m\n' "$size" "$short"
+  else
+    printf '%s\t📄 %s\n' "$size" "$short"
+  fi
+done

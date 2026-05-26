@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": true,
+  "blocks": [/*
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "os",
+          "style": "powerline",
+          "template": "not \uf179 not \uf32f not even \uE62A but {{ .Icon }}",
+          "foreground": "#ea9a97" // rose (Rosé Pine Moon)
+        }
+      ]
+    },*/
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "template": "\u256d\u2500 ",
+          "foreground": "#9ccfd8" // foam (Rosé Pine Moon)
+        },
+        {
+          "background": "#003543",
+          "foreground": "#fff",
+          "powerline_symbol": "\ue0b0",
+          "style": "powerline",
+          "template": " {{.Icon}} ",
+          "type": "os"
+        },
+        {
+          "background": "#003543",
+          "foreground": "#d2ff5e",
+          "powerline_symbol": "\ue0b0",
+          "style": "powerline",
+          "template": "\ueb99  {{ .UserName }} ",
+          "type": "session"
+        },
+        {
+          "background": "#0087D8",
+          "foreground": "#003544",
+          "powerline_symbol": "\ue0b0",
+          "options": {
+            "folder_separator_icon": " \uf061 ",
+            "style": "full"
+          },
+          "style": "powerline",
+          "template": " \ue5ff {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "background": "#ff9248",
+          "foreground": "#193549",
+          "powerline_symbol": "\ue0b0",
+          "options": {
+            "fetch_status": true
+          },
+          "style": "powerline",
+          "template": " \uF408 {{ .HEAD }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
+          "type": "git"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "type": "text",
+          "style": "plain",
+          "template": "\u2570\u2500 ",
+          "foreground": "#9ccfd8" // foam (Rosé Pine Moon)
+        },
+        {
+          "type": "text",
+          "style": "plain",
+          "template": "\ue285\ueab6", // \uea6c - wykrzyknik w trójkącie ||| \uf120 - symbol shell chyba
+          "foreground": "#9ccfd8" // foam (Rosé Pine Moon)
+        }
+      ]
+    }
+  ]
+}

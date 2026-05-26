@@ -1,0 +1,36 @@
+# ~/.config/yazi/keymap.toml
+[[mgr.prepend_keymap]]
+on = "!"
+for = "unix"
+run = 'shell "$SHELL" --block'
+desc = "Open shell here"
+
+[[mgr.prepend_keymap]]
+on = "o"
+run = "open --interactive"
+desc = "Otwórz z wyborem"
+
+[[mgr.prepend_keymap]]
+on = "<Enter>"
+run = "plugin smart-enter"
+desc = "Wejdź do katalogu lub otwórz plik"
+
+[[mgr.prepend_keymap]]
+on = "<F5>"
+run = 'shell --block -- ~/bin/yazi-targz %s'
+desc = "Compress folder to tar.gz"
+
+[[mgr.prepend_keymap]]
+on = ["g", "d"]
+run = "cd ~/Pobrane"
+desc = "Go to Downloads (Pobrane)"
+
+[[manager.prepend_keymap]]
+on = "J"
+run = "seek 1"
+desc = "Scroll preview down (precise)"
+
+[[manager.prepend_keymap]]
+on = "K"
+run = "seek -1"
+desc = "Scroll preview up (precise)"

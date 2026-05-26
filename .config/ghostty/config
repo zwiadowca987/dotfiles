@@ -1,0 +1,69 @@
+# ~/.config/ghostty/config
+# ---- Theme ----
+# ghostty +list-themes
+# theme = Catppuccin Frappe
+# theme = Catppuccin Macchiato
+# theme = Rose Pine
+theme = Rose Pine Moon
+# theme = Rose Pine Dawn
+# theme = Ubuntu
+# theme = Xcode Dark
+
+# ---- Font (bez ligatur) ----
+# font-family = JetBrains Mono
+font-family = IoskeleyMonoNL Nerd Font SemiCondensed
+font-size = 25
+
+# Wyłączenie ligatur
+font-feature = -liga
+font-feature = -calt
+
+# ---- Window ----
+# Padding (ładniejszy look)
+window-padding-x = 14
+window-padding-y = 14
+
+# Dekoracje WM
+# To są ramki okien -
+# paski tytułu (z nazwą programu i przyciskami zamknij/minimalizuj/maksymalizuj)
+# oraz obramowania wokół okien.
+
+# auto – system sam decyduje (domyślnie)
+# true – pokazuj ramki
+# false – ukryj ramki (tzw. borderless), przydatne np. z menedżerami okien jak i3/Hyprland
+window-decoration = true
+
+# Przezroczystość (to JEST poprawna opcja w stable)
+# background-opacity = 0.88
+
+# ---- Cursor ----
+cursor-style = bar
+
+# Wymusza start w katalogu domowym dla każdego nowego okna/karty
+working-directory = home
+window-inherit-working-directory = false
+
+# Tło jako obrazek
+background-image = Cats.png
+
+# Jak obrazek ma być dopasowany:
+background-image-fit = contain
+
+# Możesz przyciemnić obrazek żeby tekst był czytelny:
+# background-image-opacity = "0.01" # Nahida Background
+background-image-opacity = "0.1"
+
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+#
+# C-. pokazuje config w domyślnym edytorze
+# C-S-. przeładowanie configa
+# Not all config options can be reloaded while running;
+# Some only apply to new windows and others may require
+# a full restart to take effect.
+#
+# Empty values are used to reset config keys to default.
+# key =
