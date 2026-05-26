@@ -44,14 +44,19 @@ working-directory = home
 window-inherit-working-directory = false
 
 # Tło jako obrazek
-background-image = Cats.png
+# background-image = Cats.png
+background-image = nahida_background.png
 
 # Jak obrazek ma być dopasowany:
 background-image-fit = contain
 
 # Możesz przyciemnić obrazek żeby tekst był czytelny:
-# background-image-opacity = "0.01" # Nahida Background
-background-image-opacity = "0.1"
+# Nahida Background
+background-image-opacity = "0.01"
+# background-image-opacity = "0.1"
+
+# W Gnome nie ma ogólnej maksymalizacji okna tak jak w KDE
+maximize = true
 
 # Run `ghostty +show-config --default --docs` to view a list of
 # all available config options and their default values.
