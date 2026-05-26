@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+
+'''
+For future me,
+I created this code for two purposes.
+
+1. Export my bookmarks from json file with 7 rows each to title -> url
+2. To have template how to read JSON files
+'''
+
+import json
+import sys
+
+def main():
+    file_path = sys.argv[1]
+
+    with open(file_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    for elem in data:
+        print(f'{elem['name']}\n{elem['url']}\n')
+
+if __name__ == "__main__":
+    main()

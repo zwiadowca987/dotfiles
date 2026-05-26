@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# echo "vim: ..." | zenity --text-info --title="Skróty" --width=400 --height=300
+
+# yad nie zainstalowany na laptopie
+# echo "tekst" | yad --text-info --title="Skróty"
+
+# notify-send "Skróty vim" "dd - usuń linię\nyy - kopiuj"
+
+# echo -e "vim: dd usuń\nvim: yy kopiuj" | fzf --no-sort
+
+# tekst="test"
+# tekst="${tekst} tekst2"
+# tekst="${tekst}\ntekst3"
+
+# notify-send $tekst
+msg=$( cat <<EOF
+vim: dd=usuń yy=kopiuj p=wklej u=undo\n
+emacs: C-k=usuń M-w=kopiuj C-y=wklej C-/=undo
+$0 $1
+EOF
+)
+notify-send -u normal -t 8000 -i dialog-information -a "helpme" "Skróty" "$msg"
