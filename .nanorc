@@ -1,0 +1,8 @@
+set linenumbers
+set softwrap
+set tabsize 4
+set autoindent
+set tabstospaces
+set constantshow
+set minibar
+set mouse
