@@ -1,0 +1,21 @@
+#!/usr/bin/env python3
+
+'''
+For future me,
+this file contains nothing more than fun fact about built-in library.
+Just give python year and month, he will take care of everything else.
+'''
+
+import calendar
+import sys
+
+def main():
+    if len(sys.argv) < 2 or int(sys.argv[2]) not in range(1, 13):
+        print('Usage')
+        print('calendar_py <year> <month>')
+
+    year, month = int(sys.argv[1]), int(sys.argv[2])
+    print(calendar.month(year, month))
+
+if __name__ == "__main__":
+    main()
