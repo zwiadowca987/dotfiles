@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-import tkinter as tk
-import random
 
 '''
 For future me,
@@ -8,6 +6,10 @@ the time has come. It is good moment to finally learn something more than PySimp
 Here you have simple game in which you guess numbers (idk its name lol).
 In future updates there will be more added.
 '''
+
+import tkinter as tk
+import random
+
 
 class GuessingGame:
     def __init__(self):
@@ -57,28 +59,33 @@ class GuessingGame:
         btn.config(text=str(value))
     
     def check(self, id):
+        for i in range(6):
+            self.buttons[int(id)][i].config(state='disabled')
+
         input = ''
         for i in range(5):
             input += self.buttons[int(id)][i].cget('text')
+
+        if input == self.correct:
+            print('you won')
+            return
+
+        if id == 4:
+            print('you lost')
+            return
 
         for i in range(5):
             if input[i] not in self.correct:
                 self.buttons[int(id)][i].config(bg='red')
             elif input[i] in self.correct and input[i] == self.correct[i]:
                 self.buttons[int(id)][i].config(bg='green')
+                self.buttons[int(id)+1][i].config(bg='green',
+                                                  state='disabled',
+                                                  text=self.buttons[int(id)][i].cget('text'))
             else:
                 self.buttons[int(id)][i].config(bg='yellow')
 
-        if input == self.correct:
-            print('you won')
-            return
-
-        if id == 5:
-            print('you lost')
-            return
-
         for i in range(6):
-            self.buttons[int(id)][i].config(state='disabled')
             self.buttons[int(id+1)][i].config(state='normal')
 
     def run(self):
