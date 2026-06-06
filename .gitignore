@@ -1,3 +1,9 @@
-*~
+# Python envs anywhere in repo
+**/.venv/
+**/__pycache__/
 
+# backups
+**~
+
+# _download binary files
 bin/_download/
