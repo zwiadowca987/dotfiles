@@ -1,0 +1,31 @@
+#!/bin/bash
+
+CONTAINER="mc-server"
+LOGFILE="$HOME/mc-server/mc_sessions.log"
+
+XMS="${XMS:-8G}"
+XMX="${XMX:-10G}"
+
+START_TS=$(date +%s)
+START_HUMAN=$(date '+%Y-%m-%d %H:%M:%S')
+
+echo "START: $START_HUMAN" >> "$LOGFILE"
+
+podman start "$CONTAINER" >/dev/null
+
+podman exec -w /data -it mc-server \
+    java -Xms"$XMS" -Xmx"$XMX" \
+    -jar paper.jar nogui
+
+END_TS=$(date +%s)
+END_HUMAN=$(date '+%Y-%m-%d %H:%M:%S')
+
+DIFF=$((END_TS - START_TS))
+H=$((DIFF / 3600))
+M=$(((DIFF % 3600) / 60))
+S=$((DIFF % 60))
+
+echo "STOP:  $END_HUMAN | ${DIFF}s -> ${H}h ${M}min ${S}s" >> "$LOGFILE"
+
+echo "Sesja: ${H}h ${M}min ${S}s"
+echo "Zapisano do: $LOGFILE"
