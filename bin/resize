@@ -1,0 +1,13 @@
+#!/bin/bash
+
+for file in *.{png,jpg,jpeg,JPG,JPEG,PNG}; do
+    # Pomiń, jeśli wzorzec nie pasuje do żadnego pliku
+    [ -e "$file" ] || continue
+
+    filename="${file%.*}"
+    extension="${file##*.}"
+
+    magick "$file" \
+        -resize '1080x>' \
+        "${filename}_min.${extension}"
+done
