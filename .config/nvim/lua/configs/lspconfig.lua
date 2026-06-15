@@ -6,6 +6,7 @@ local servers = {
   "gopls",
   "html",
   "pyright",
+  "tinymist",
 }
 
 for _, server in ipairs(servers) do
@@ -19,3 +20,13 @@ for _, server in ipairs(servers) do
 end
 
 vim.lsp.enable("org")
+
+vim.lsp.config("tinymist", {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  settings = {
+    formatterMode = "typstyle",
+    exportPdf = "onSave",
+  },
+})
