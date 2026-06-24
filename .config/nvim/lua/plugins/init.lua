@@ -15,28 +15,21 @@ return {
   {
     "hrsh7th/nvim-cmp",
     opts = function(_, opts)
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = { "typst", "org", "markdown", "lilypond" },  -- tutaj dodajesz kolejne typy
-        callback = function()
-          require("cmp").setup.buffer({
-            sources = {
-              { name = "nvim_lsp" },
-              { name = "luasnip" },
-              { name = "path" },
-            },
-          })
-        end,
-      })
-      vim.api.nvim_create_autocmd("FileType", {
-        pattern = "lilypond",
-        callback = function()
-          require("cmp").setup.buffer({
-            sources = {
-              { name = "dictionary", keyword_length = 2 },
-            },
-          })
-        end,
-      })
+      local cmp = require("cmp")
+
+      opts.enabled = function()
+        local ft = vim.bo.filetype
+
+        if ft == "org"
+          or ft == "typst"
+          or ft == "markdown"
+        then
+          return false
+        end
+
+        return true
+      end
+
       return opts
     end,
   },
