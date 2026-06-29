@@ -3,13 +3,14 @@ from pathlib import Path
 import sys
 import subprocess
 
-BIN_DIR = Path(__file__).parent / "_download"
 DOWNLOAD_DIR = Path.home() / "Pobrane" / "download"
 DOWNLOAD_DIR.mkdir(parents=True, exist_ok=True)
 
+# for f in `cat loop_test`; do download music $f; done;
+# yt-dlp --cookies-from-browser brave --flat-playlist --print webpage_url "https://www.youtube.com/playlist?list=PLyf4iY89UUeG8W4I5yWhZYFEBwlzWuSIW"
 profiles = {
     "music": {
-        "cmd": str(BIN_DIR / "yt-dlp"),
+        "cmd": "yt-dlp",
         "args": [
             "--newline",
             "-x",
@@ -21,7 +22,7 @@ profiles = {
         ],
     },
     "video": {
-        "cmd": str(BIN_DIR / "yt-dlp"),
+        "cmd": "yt-dlp",
         "args": [
             "--newline",
             "-f", "bestvideo+bestaudio/best",
@@ -31,7 +32,7 @@ profiles = {
         ],
     },
     "image": {
-        "cmd": str(BIN_DIR / "gallery-dl.bin"),
+        "cmd": "gallery-dl.bin",
         "args": [
             "--cookies-from-browser", "brave",
             "-o", "directory=[\"instagram\", \"{username}_{post_shortcode}\"]",
