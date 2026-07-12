@@ -17,6 +17,7 @@ alias comfyui="cd ai-lab/ComfyUI/ && source venv/bin/activate && python main.py"
 # alias disk="du -sh -- * .[^.]* 2>/dev/null | sort -hr"
 alias n="nvim"
 alias org="y ~/Dokumenty/ObsidianVault/org"
+alias windows="sudo mount /dev/nvme0n1p3 /mnt/windows"
 
 # Functions
 function y() {
