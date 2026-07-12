@@ -1,6 +1,13 @@
-# Python envs anywhere in repo
-**/.venv/
-**/__pycache__/
+# Python environments
+venv/
+.venv/
 
-# backups
-**~
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Editor backups
+*~
