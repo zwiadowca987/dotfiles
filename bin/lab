@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# start ipython
+cd ~/dotfiles/lab/
+source venv/bin/activate
+jupyter lab
