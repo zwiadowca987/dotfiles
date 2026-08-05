@@ -1,6 +1,39 @@
 #!/bin/bash
 
-# start ipython
-cd ~/dotfiles/lab/
-source venv/bin/activate
-jupyter lab
+# 1. Określenie katalogu docelowego (drugi argument: $2)
+if [ "$2" = "." ]; then
+    WORK_DIR="$PWD" # Zostajemy w obecnym katalogu
+else
+    WORK_DIR="$HOME/dotfiles/lab/" # Ścieżka domyślna
+fi
+
+# Przejście do wybranego katalogu
+cd "$WORK_DIR" || { echo "Błąd: Nie można wejść do $WORK_DIR"; exit 1; }
+
+# 2. Aktywacja środowiska wirtualnego
+# Ważne: Ścieżka musi być bezwzględna ($HOME/...), żeby venv zadziałał,
+# gdy wywołasz skrypt z "kropką" będąc w zupełnie innym katalogu!
+VENV_PATH="$HOME/dotfiles/lab/venv/bin/activate"
+
+if [ -f "$VENV_PATH" ]; then
+    source "$VENV_PATH"
+else
+    echo "Błąd: Nie znaleziono aktywatora venv w $VENV_PATH"
+    exit 1
+fi
+
+# 3. Wybór narzędzia (pierwszy argument: $1)
+case "$1" in
+    jupyter)
+        jupyter lab
+        ;;
+    ipython)
+        ipython
+        ;;
+    *)
+        # Co się stanie, gdy wpiszesz samo "lab" lub błędną nazwę
+        echo "Użycie: lab [jupyter|ipython] [.]"
+        echo "  . - opcjonalnie, otwiera narzędzie w obecnym katalogu"
+        exit 1
+        ;;
+esac
