@@ -19,4 +19,4 @@ if [ -f "$APP_DIR/requirements.txt" ]; then
     "$VENV/bin/pip" install -r "$APP_DIR/requirements.txt" --quiet
 fi
 
-exec "$VENV/bin/python" "$APP_DIR/app.py"
+exec "$VENV/bin/python" "$APP_DIR/app.py" "$@"
