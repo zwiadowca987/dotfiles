@@ -19,6 +19,9 @@ profiles = {
             "--add-metadata",
             "-P", str(DOWNLOAD_DIR),
             "-o", "%(title)s.%(ext)s",
+            "--js-runtimes", "node",
+            "--remote-components", "ejs:github",
+            "--cookies-from-browser", "brave"
         ],
     },
     "video": {
