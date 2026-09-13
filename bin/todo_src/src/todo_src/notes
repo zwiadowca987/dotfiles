@@ -1,0 +1,26 @@
+TODO: - TODO WŁAŚCIWE  - BOOKMARKS
+
+todo właściwe
+- dodaj    - usuń     - edytuj
+- zrobione - historia - wyświetl
+
+- Tytuł       - Szczegóły  - Termin
+- Lokalizacja - Etykiety   - Status
+
+bookmarks
+- dodaj - usuń - edytuj - wyświetl
+
+- Tytuł - Link  - Opis
+- Data  - Etykiety
+
+┌────────────────────────────────────────────────┐
+│                    T&B                         │
+├────────────────────────────────────────────────┤
+│          TODO        |     BOOKMARS            │
+│                      |                         │
+│  > Lista             |    > Lista              │
+│                      |                         │
+│  > Dodaj             |    > Dodaj              │
+│                      |                         │
+│  > Historia          |                         │
+└────────────────────────────────────────────────┘

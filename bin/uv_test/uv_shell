@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# as simple as can be
+echo 'print("hi!")' > example3.py
+uv run example3.py
+
+# not as simple but still easy
+cat <<EOF > example3.py
+import os
+
+print(os.path.expanduser("~"))
+EOF
+uv run example3.py
+
+# one line
+echo 'print("hello")' | uv run -
+
+# multiple lines needed
+uv run - <<EOF
+print("hello world!")
+EOF
+
+# with library
+uv run --with rich - <<eof
+import time
+from rich.progress import track
+
+for i in track(range(20), description="for example:"):    time.sleep(0.05)
+eof
+
+# creating script
+rm example4.py
+uv init --script example4.py
+uv add --script example4.py 'requests<3' 'rich'
+uv run example4.py
+
+# shebang - must be added manually
+# #!/usr/bin/env -S uv run --script
+
+# creating project
+uv init hello-world
+cd hello-world
+
+# or
+# mkdir hello-world
+# cd hello-world
+# uv init
+
+# uv creates this
+# ├── .git/
+# ├── .gitignore
+# ├── .python-version
+# ├── pyproject.toml
+# ├── README.md
+# └── src
+#     └── hello_world
+#         └── __init__.py
+
+uv run hello-world
+
+uv add requests
+uv remove requests
+uv lock --upgrade-package requests
+uv version
+uv version --output-format json

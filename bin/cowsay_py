@@ -1,0 +1,14 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# dependencies = [
+#   "cowsay",
+# ]
+# ///
+
+import cowsay
+
+cowsay.tux('Hi from python')
+# cowsay.dragon('Grr!')
+print(cowsay.char_names)
+
+print(cowsay.get_output_string('cow', 'Hello World'))
